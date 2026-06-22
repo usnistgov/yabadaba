@@ -62,7 +62,7 @@ class Album(Record):
         self._add_value('date', 'releasedate', description='release date')
         self._add_value('strlist', 'genre')
 
-        self._add_value('record', 'tracks', recordclass=Track, description='List of album tracks')
+        self._add_value('recordlist', 'tracks', recordclass=Track, description='List of album tracks')
 
         # Modify tracks queries
         self.get_value('tracks').queries.pop('number')
