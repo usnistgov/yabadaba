@@ -1,6 +1,69 @@
-[build-system]
-requires = [
-    "setuptools>=42",
-    "wheel"
+[project]
+name = "yabadaba"
+version = "0.4.0"
+description = "Yay, a base database! Easily build user-friendly APIs to FAIR databases."
+readme = "README.rst"
+requires-python = ">=3.7"
+dependencies = [
+    'lxml',
+    'DataModelDict',
+    'IPython',
+    'numpy', 
+    'pandas',
+    'cdcs>=0.2.4',
+    'pymongo',
+    'tqdm',
+    'pillow'
 ]
-build-backend = "setuptools.build_meta"
+authors = [
+  {name = "Lucas Hale", email = "lucas.hale@nist.gov"}
+]
+license = "NIST-Software"
+keywords = [
+    'json',
+    'xml',
+    'database',
+    'mongodb',
+    'cdcs',
+    'dictionary',
+]
+classifiers = [
+    'Development Status :: 4 - Beta',
+    'Intended Audience :: Science/Research',
+    'Natural Language :: English',
+    'Operating System :: OS Independent',
+    'Programming Language :: Python :: 3',
+    'Programming Language :: Python :: 3.7',
+    'Programming Language :: Python :: 3.8',
+    'Programming Language :: Python :: 3.9',
+    'Programming Language :: Python :: 3.10',
+    'Programming Language :: Python :: 3.11',
+    'Programming Language :: Python :: 3.12',
+    'Programming Language :: Python :: 3.13',
+    'Programming Language :: Python :: 3.14',
+    'Topic :: File Formats :: JSON',
+    'Topic :: Text Processing :: Markup :: XML',
+    'Topic :: Scientific/Engineering :: Physics'
+]
+      
+[project.urls]
+Homepage = "https://github.com/usnistgov/yabadaba/"
+Documentation = "https://github.com/usnistgov/yabadaba"
+Repository = "https://github.com/usnistgov/yabadaba.git"
+
+[tool.uv.sources]
+DataModelDict = { path = "../DataModelDict", editable = true }
+cdcs = { path = "../pycdcs", editable = true }
+
+[build-system]
+requires = ["uv_build>=0.11.26,<0.12"]
+build-backend = "uv_build"
+
+[tool.uv.build-backend]
+module-name = "yabadaba"
+module-root = ""
+
+[dependency-groups]
+dev = [
+    "pytest>=7.4.4",
+]
