@@ -709,7 +709,7 @@ class LocalDatabase(Database):
             raise ValueError('kwargs style and name cannot be given with kwarg record')
 
         # Build path to record
-        
+        tar_path = Path(self.host, record.style, record.name+'.tar.gz')
         if not tar_path.is_file():
             raise ValueError(f'No existing tar found for {record.style} record {record.name}')
 
