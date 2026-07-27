@@ -98,6 +98,8 @@ class CDCSDatabase(Database):
                     name: Union[str, list, None] = None,
                     query: Optional[dict] = None,
                     keyword: Optional[str] = None,
+                    page: Optional[int] = None,
+                    progress_bar: bool = True,
                     **kwargs) -> Union[list, Tuple[list, pd.DataFrame]]:
         """
         Produces a list of all matching records in the database.
@@ -152,7 +154,9 @@ class CDCSDatabase(Database):
         # Build records by querying for each record name (or None)
         records = []
         for n in iaslist(name):
-            data = self.cdcs.query(title=n, template=style, mongoquery=query, keyword=keyword)
+            data = self.cdcs.query(title=n, template=style, mongoquery=query,
+                                   keyword=keyword, page=page,
+                                   progress_bar=progress_bar)
             if len(data) > 0:
                 records.extend(data.apply(build_records, axis=1))
         records = np.array(records)
@@ -182,6 +186,8 @@ class CDCSDatabase(Database):
                        name: Union[str, list, None] = None,
                        query: Optional[dict] = None,
                        keyword: Optional[str] = None,
+                       page: Optional[int] = None,
+                       progress_bar: bool = True,
                        **kwargs) -> pd.DataFrame:
         """
         Produces a list of all matching records in the database.
@@ -208,7 +214,9 @@ class CDCSDatabase(Database):
         records_df : pandas.DataFrame
             The corresponding metadata values for the records.
         """
-        return self.get_records(style, name=name, query=query, keyword=keyword, return_df=True, **kwargs)[1]
+        return self.get_records(style, name=name, query=query, keyword=keyword,
+                                page=page, progress_bar=progress_bar, 
+                                return_df=True, **kwargs)[1]
 
     def get_record(self, 
                    style: Optional[str] = None,
