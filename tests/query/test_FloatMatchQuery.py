@@ -8,7 +8,7 @@ class TestFloatMatchQuery(BaseTestQuery):
 
     @property
     def style(self) -> str:
-        return 'float_match'
+        return 'float'
 
     def test_mongo(self):
         """Tests mongo query"""

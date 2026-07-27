@@ -164,7 +164,7 @@ class IntQuery(Query):
                     if name in child and pd.notna(child[name]):
 
                         # Check if child element directly matches a value
-                        if int(child[name]) in value:
+                        if int(child[name]) in val:
                             return True
                         
                         # Check if value is in a given range

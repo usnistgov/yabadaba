@@ -8,7 +8,7 @@ class TestIntMatchQuery(BaseTestQuery):
 
     @property
     def style(self) -> str:
-        return 'int_match'
+        return 'int'
 
     def test_mongo(self):
         """Tests mongo query"""
@@ -25,19 +25,19 @@ class TestIntMatchQuery(BaseTestQuery):
         # Check single value
         querylist = []
         query.mongo(querylist, 57)
-        querydict = querylist[0]
+        querydict = querylist[0]['$or'][0]
         assert querydict['root.element']['$in'] == [57]
 
         # Check multiple values
         querylist = []
         query.mongo(querylist, [105, '95'])
-        querydict = querylist[0]
+        querydict = querylist[0]['$or'][0]
         assert querydict['root.element']['$in'] == [105, 95]
 
         # Check single value with prefix
         querylist = []
         query.mongo(querylist, 57, prefix='content.')
-        querydict = querylist[0]
+        querydict = querylist[0]['$or'][0]
         assert querydict['content.root.element']['$in'] == [57]
 
     @property
@@ -151,13 +151,13 @@ class TestIntMatchQuery(BaseTestQuery):
 
         # Test mongo
         querylist = []
-        load_query('int_match', path='root.element').mongo(querylist, [105, '95'])
-        querydict = querylist[0]
+        load_query('int', path='root.element').mongo(querylist, [105, '95'])
+        querydict = querylist[0]['$or'][0]
         assert querydict['root.element']['$in'] == [105, 95]
 
         # Test pandas
         df = self.df
-        df2 = df[load_query('int_match', name='thisguy', parent='parent').pandas(df, [7, '50'])]
+        df2 = df[load_query('int', name='thisguy', parent='parent').pandas(df, [7, '50'])]
         assert len(df2) == 2
         assert df2.name.tolist()[0] == 'first'
         assert df2.name.tolist()[1] == 'third'
