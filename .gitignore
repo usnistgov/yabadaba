@@ -18,3 +18,7 @@ upload_package.bash
 testdb/
 
 test/
+
+# uv files
+uv.lock
+.venv/
