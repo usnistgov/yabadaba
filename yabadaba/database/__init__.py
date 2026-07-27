@@ -1,4 +1,3 @@
-# coding: utf-8
 __all__ = ['Database', 'databasemanager', 'load_database']
 
 # Import base Database class

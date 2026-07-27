@@ -1,4 +1,3 @@
-# coding: utf-8
 # Standard Python libraries
 import sys
 from importlib import import_module

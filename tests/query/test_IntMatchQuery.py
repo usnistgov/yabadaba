@@ -1,4 +1,3 @@
-# coding: utf-8
 
 from yabadaba import load_query
 

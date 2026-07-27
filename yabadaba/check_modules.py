@@ -1,4 +1,3 @@
-# coding: utf-8
 
 # iprPy imports
 from . import recordmanager, databasemanager, querymanager, valuemanager

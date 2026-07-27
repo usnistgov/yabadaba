@@ -1,4 +1,3 @@
-# coding: utf-8
 
 # https://docs.pytest.org/en/latest/
 from pytest import raises

@@ -1,4 +1,3 @@
-# coding: utf-8
 __all__ = sorted(['aslist', 'iaslist', 'screen_input', 'dict_insert',
                   'ModuleManager', 'is_uuid'])
 

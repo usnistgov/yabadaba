@@ -1,4 +1,3 @@
-# coding: utf-8
 
 # Import valuemanager
 from yabadaba import valuemanager

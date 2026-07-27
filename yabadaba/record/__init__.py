@@ -1,4 +1,3 @@
-# coding: utf-8
 __all__ = ['Record', 'recordmanager', 'load_record']
 
 # Standard Python libraries

@@ -1,4 +1,3 @@
-# coding: utf-8
 __all__ = ['querymanager', 'Query', 'load_query']
 
 # Standard Python libraries
